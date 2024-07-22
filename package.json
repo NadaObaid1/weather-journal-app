@@ -1,0 +1,17 @@
+{
+  "name": "weather-journal-app",
+  "version": "1.0.0",
+  "description": "Weather Journal App is a project developed as part of the Udacity Frontend Web Developer Nanodegree program. This application allows users to obtain current weather information for a specific location using its ZIP code and record their feelings. The app connects the client-side interface to a server and fetches weather data from the OpenWeatherMap API. Users can enter their feelings, and the application will display the current temperature, date, and the user's feelings. This project provided an opportunity to build a client-side application that communicates with a backend server.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
