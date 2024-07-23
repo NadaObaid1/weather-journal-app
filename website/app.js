@@ -26,24 +26,22 @@ function performAction(e) {
         })
         .then(() => retrieveData())
         .catch((error) => {
-            console.log("Error in performAction:", error);
-            document.getElementById('temp').innerHTML = 'Error retrieving temperature';
-            document.getElementById('content').innerHTML = 'Error retrieving user response';
-            document.getElementById('date').innerHTML = 'Error retrieving date';
+            console.log("Error:", error);
+            document.getElementById('temp').innerHTML = 'Error temp';
+            document.getElementById('content').innerHTML = 'Error content';
+            document.getElementById('date').innerHTML = 'Error date';
         });
     }
 
     
 // Function to GET Web API Data
 const getWeatherData = async (zip) => {
-    console.log(`Fetching weather data for zip: ${zip}`);
     try {
         const res = await fetch(`${baseURL}?zip=${zip}&appid=${apiKey}`);
         const data = await res.json();
         if (data.cod !== 200) {
             throw new Error(data.message);
         }
-        console.log("Weather data:", data);
         return data;
     } catch (error) {
         console.log("Error:", error);
@@ -70,14 +68,12 @@ const postData = async (url = '', data = {}) => {
 
 // Function to GET Project Data 
 const retrieveData = async () => {
-    console.log("Retrieving project data");
     try {
         const request = await fetch('http://localhost:3000/all');
-        const allData = await request.json();
-        console.log("Retrieved data:", allData);
-        document.getElementById('temp').innerHTML = Math.round(allData.temperature) + ' degrees';
-        document.getElementById('content').innerHTML = allData.userResponse;
-        document.getElementById('date').innerHTML = allData.date;
+        const allDataReturn = await request.json();
+        document.getElementById('temp').innerHTML = Math.round(allDataReturn.temperature) + ' degrees';
+        document.getElementById('content').innerHTML = allDataReturn.userResponse;
+        document.getElementById('date').innerHTML = allDataReturn.date;
     } catch (error) {
         console.log("Error:", error);
     }
